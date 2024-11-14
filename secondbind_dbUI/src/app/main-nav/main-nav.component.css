@@ -1,0 +1,16 @@
+nav {
+  height: 8em;
+  padding-top: 2em;
+  border-bottom: 2px solid;
+}
+
+button {
+  background: white;
+  border-radius: 0.4em;
+  margin-right: 2em;
+  padding: 0.4em 1em;
+}
+
+button:hover {
+  background: #cfcfcf;
+}

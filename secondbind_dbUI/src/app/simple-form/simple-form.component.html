@@ -1,0 +1,83 @@
+<div class="container">
+  <form [formGroup]="bookForm" (keyup)="checkForm()" (change)="checkForm()">
+    <h4>Add-Book</h4>
+    <p><i>* all fields required</i></p>
+    <label for="bookTitle">Title:&nbsp;&nbsp;</label
+    ><input
+      formControlName="title"
+      class="inputBlock"
+      type="text"
+      placeholder="To Kill A Mockingbird..."
+      name="bookTitle"
+      required
+    />
+    <br />
+    <br />
+    <label for="author">Author:&nbsp;&nbsp;</label>
+    <input
+      formControlName="author"
+      class="inputBlock"
+      type="text"
+      placeholder="Harper Lee"
+      name="author"
+      required
+    />
+    <br />
+    <br />
+    <label for="genres">Genres:&nbsp;&nbsp;</label>
+    <input
+      formControlName="genres"
+      type="text"
+      name="genres"
+      class="inputBlock"
+      placeholder="Fiction,Bildungsroman"
+      required
+    />
+    <br />
+    <br />
+    <div class="pubSection">
+      <label id="pubLabel" for="publicationYear"
+        >Publication Date:&nbsp;&nbsp;</label
+      >
+      <input
+        formControlName="pubYear"
+        class="pubYear inputBlock"
+        type="number"
+        name="publicationYear"
+        placeholder="1960"
+        max="{{ currentYear }}"
+        required
+      />
+    </div>
+    <br />
+    <label for="ISBN">ISBN:&nbsp;&nbsp;</label
+    ><input
+      formControlName="ISBN"
+      class="inputBlock"
+      type="text"
+      maxLength="13"
+      placeholder="13 digit format"
+    />
+    <br />
+    <br />
+    <div class="submitDiv">
+      <input
+        type="submit"
+        id="submitBtn"
+        (click)="submitForm()"
+        [disabled]="disableSubmit"
+      />
+      <div class="errorMsg responseMsg" *ngIf="showError">
+        <p>Something went wrong</p>
+      </div>
+      <div class="successMsg responseMsg" *ngIf="showSuccess">
+        <p>Success!</p>
+      </div>
+    </div>
+  </form>
+
+  <br />
+  <br />
+
+  {{ bookForm.value | json }}
+</div>

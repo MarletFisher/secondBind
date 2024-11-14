@@ -1,0 +1,150 @@
+<div class="container">
+  <form [formGroup]="filterCriteria">
+    <h4>Filter</h4>
+    <p><i>* leave blank for open query</i></p>
+    <label for="bookTitle">Title:&nbsp;&nbsp;</label
+    ><input
+      formControlName="title"
+      class="inputBlock"
+      type="text"
+      placeholder="Dr. Jekyll and Mr. Hyde"
+      name="bookTitle"
+    />
+    <br />
+    <br />
+    <label for="author">Author:&nbsp;&nbsp;</label>
+    <input
+      formControlName="author"
+      class="inputBlock"
+      type="text"
+      placeholder="Robert Louis Stevenson"
+      name="author"
+    />
+    <br />
+    <br />
+    <label for="genres">Genres:&nbsp;&nbsp;</label>
+    <button (click)="showList()" id="genreBtn">{{ genreBtnText }}</button>
+    <ng-container *ngIf="showGenres">
+      <div class="genreSection">
+        <ng-container *ngFor="let genre of genreList">
+          <div class="genreBlock">
+            <input
+              formControlName="genres"
+              class="genreCheckbox"
+              type="checkbox"
+              name="genres"
+              value="{{ genre }}"
+              (change)="onCheckboxChange($event)"
+            /><label for="genre{{ genre }}">&nbsp;&nbsp;{{ genre }}</label>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <br />
+    <br />
+    <div class="pubSection">
+      <label id="pubLabel" for="startYear">Publication Date:&nbsp;&nbsp;</label>
+      <input
+        formControlName="startDate"
+        class="pubYear inputBlock"
+        type="number"
+        name="startYear"
+        placeholder="1886"
+        max="{{ currentYear }}"
+      />
+      <p id="dateRangeHyphen">&nbsp;&nbsp;-&nbsp;&nbsp;</p>
+      <input
+        formControlName="endDate"
+        class="pubYear inputBlock"
+        type="number"
+        name="endYear"
+        placeholder="{{ currentYear }}"
+        max="{{ currentYear }}"
+      />
+    </div>
+    <br />
+    <br />
+    <label for="ISBN">ISBN:&nbsp;&nbsp;</label
+    ><input
+      formControlName="ISBN"
+      class="inputBlock"
+      type="text"
+      maxLength="13"
+      placeholder="1234567890123"
+    />
+    <br />
+    <br />
+    <input type="submit" (click)="submitForm()" id="submitBtn" />
+  </form>
+
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" />
+      <input matEndDate placeholder="End date" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker
+      #picker
+      startView="multi-year"
+      [startAt]="startDate"
+    ></mat-date-range-picker>
+  </mat-form-field> -->
+
+  <br />
+  <br />
+  {{ filterCriteria.value | json }}
+
+  <nav class="exportNav">
+    <div class="exportDiv">
+      <h6>JSON export:</h6>
+      <div class="exportButtons">
+        <button (click)="switchView()" id="viewBtn">
+          {{ exportView == "TABLE" ? "JSON" : "TABLE" }}
+        </button>
+        <button (click)="copyToClipboard()" id="copyBtn">
+          {{ copyButton }}
+        </button>
+      </div>
+    </div>
+  </nav>
+  <textarea
+    *ngIf="exportView == 'JSON'"
+    id="exportArea"
+    onclick="this.select(); copyToClipboard()"
+    >{{ filterArray | json }}</textarea
+  >
+  <div *ngIf="exportView == 'TABLE'">
+    <table class="resultTable">
+      <thead>
+        <tr>
+          <td>EntryID</td>
+          <td>Title</td>
+          <td>Author</td>
+          <td>Genres</td>
+          <td>Publication Year</td>
+          <td>ISBN</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!filterArray">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr *ngFor="let row of filterArray">
+          <td>{{ row.EntryID }}</td>
+          <td>{{ row.Title }}</td>
+          <td>{{ row.Author }}</td>
+          <td>{{ row.Genre }}</td>
+          <td>{{ row.Publication }}</td>
+          <td>{{ row.ISBN }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footerSpace"></div>
+</div>

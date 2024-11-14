@@ -1,0 +1,52 @@
+form {
+  width: 36em;
+  border: 1px solid;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+label {
+  width: 10em;
+}
+
+.inputBlock {
+  height: 2.4em;
+  width: 12em;
+  padding-left: 0.5em;
+}
+
+button {
+  height: 2.4em;
+  border-radius: 0.5em;
+}
+
+#submitBtn {
+  height: 2.4em;
+  border-radius: 0.5em;
+  padding: 0em 2em;
+}
+
+.submitDiv {
+  display: flex;
+}
+
+.errorMsg {
+  background-color: #ff596f;
+}
+
+.successMsg {
+  background-color: #94ff97;
+}
+
+.responseMsg {
+  text-align: center;
+  border-radius: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1em;
+  margin-left: 2em;
+  p {
+    margin: 0px;
+  }
+}

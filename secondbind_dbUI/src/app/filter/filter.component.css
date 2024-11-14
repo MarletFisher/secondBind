@@ -1,0 +1,107 @@
+form {
+  width: 36em;
+  border: 1px solid;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.genreCheckbox {
+  height: 1em;
+  width: 1em;
+  padding-top: 0.2em;
+}
+
+label {
+  width: 10em;
+}
+
+.pubSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputBlock {
+  height: 2.4em;
+  width: 12em;
+  padding-left: 0.5em;
+}
+
+.pubYear {
+  width: 6em;
+}
+
+.genreSection {
+  max-width: 30em;
+  display: flex;
+  flex-flow: wrap;
+  border: 1px solid;
+  margin-top: 1em;
+  padding: 1em 0em;
+}
+
+.genreBlock {
+  padding-left: 2em;
+  min-width: 50%;
+}
+
+.exportNav {
+  margin-bottom: 2em;
+}
+
+.exportDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+}
+
+button {
+  height: 2.4em;
+  border-radius: 0.5em;
+}
+
+#submitBtn {
+  height: 2.4em;
+  border-radius: 0.5em;
+  padding: 0em 2em;
+}
+
+#dateRangeHyphen {
+  font-size: 1.4em;
+}
+
+#pubLabel {
+  height: 1em;
+  margin-top: 0.6em;
+}
+
+#copyBtn {
+  width: 10em;
+}
+
+#exportArea {
+  height: 20em;
+  width: 100%;
+  max-width: 1000px;
+}
+
+#viewBtn {
+  margin-right: 1em;
+}
+
+.resultTable {
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid;
+  border-collapse: true;
+}
+
+td {
+  border-collapse: true;
+  border: 1px solid;
+  padding: 0.5em 1em;
+}
+
+.footerSpace {
+  height: 6em;
+}
