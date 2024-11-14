@@ -1,0 +1,7 @@
+CREATE PROCEDURE GetUniqueGenres
+AS
+BEGIN
+    SELECT DISTINCT Genre
+    FROM Inventory
+    ORDER BY Genre;
+END
